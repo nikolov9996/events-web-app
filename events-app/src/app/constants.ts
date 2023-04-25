@@ -1,7 +1,9 @@
 export const PAGES = {
-    MY_TICKETS: "wish-list",
-    EVENT_DETAILS: "event:id",
-    CREATE_EVENT: "create-event"
+    HOME:"/",
+    MY_TICKETS: "/wish-list",
+    EVENT_DETAILS: ":eventId",
+    CREATE_EVENT: "/create-event",
+    EVENT_DETAILS_PATH: (eventId: string) => `/event/${eventId}`,
 }
 
 export const API_KEY = "XPpfJMvVT1yuJqwGAV5dQ5wQCbBlCkLA";

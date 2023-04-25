@@ -1,11 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 import type { RootState } from 'app/store'
+import { eventItem } from 'app/types'
 
 export const HOME_SLICE = "home-slice"
 
 interface homeState {
-    events: any[]
+    events: eventItem[]
 }
 
 const initialState: homeState = {
@@ -16,7 +17,7 @@ export const homeSlice = createSlice({
     name: HOME_SLICE,
     initialState,
     reducers: {
-        setEvents: (state, action: PayloadAction<any[]>) => {
+        setEvents: (state, action: PayloadAction<eventItem[]>) => {
             state.events = [...action.payload]
         }
     },
