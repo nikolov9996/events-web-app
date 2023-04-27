@@ -4,10 +4,9 @@ import { useAppDispatch } from "app/hooks";
 import { EventDetailsType } from "app/types";
 import moment from "moment";
 import React, { useEffect } from "react";
-import { useLocation, useParams } from "react-router-dom";
+import {  useParams } from "react-router-dom";
 import { addTickets } from "../WishList/wishListSlice";
-
-
+import Button from "app/components/Button";
 
 const Index = () => {
   const dispatch = useAppDispatch();
@@ -22,7 +21,7 @@ const Index = () => {
       })
       .catch(e => console.log(e))
       .finally(() => { })
-  }, []);
+  }, [eventId]);
 
 
   const handleAdd = (price: string) => {
@@ -31,7 +30,7 @@ const Index = () => {
       price: price,
       ticketsCount: tickets,
       image: getLargestImage(event?.images)?.url,
-      name:event?.name
+      name: event?.name
     }))
     alert(tickets + " tickets added to wishlist")
     setTickets(0);
@@ -58,7 +57,7 @@ const Index = () => {
 
           <p>{event?.info}</p>
 
-          <p>For more info <a className="text-lg font-semibold text-blue-700" target="_blank" href={event?.url}>Original site</a></p>
+          <p>For more info <a className="text-lg font-semibold text-blue-700" target="_blank" rel="noreferrer" href={event?.url}>Original site</a></p>
           <p>Tickets Limit: <span className="text-lg font-semibold">{event?.accessibility?.ticketLimit || "N/A"}</span> </p>
           <p>Ticket Price Range/s </p>
 
@@ -74,9 +73,7 @@ const Index = () => {
                   })}
                 </select>
                 {/*  avg price */}
-                <button disabled={!tickets} onClick={() => handleAdd(Math.round(min + max / 2).toString() + " " + currency)} className="bg-gray-800 hover:bg-gray-700 text-white font-bold py-2 px-4">
-                  Add to Wish List
-                </button>
+                <Button label="Add to Wish List" disabled={!tickets} onClick={() => handleAdd(Math.round(min + max / 2).toString() + " " + currency)} />
               </div>
             )
           })}

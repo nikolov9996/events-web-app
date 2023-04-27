@@ -1,11 +1,11 @@
 import { useAppDispatch, useAppSelector } from "app/hooks"
 import { removeTickets, selectTickets } from "./wishListSlice"
 import { WishLIstItemType } from "app/types";
+import Button from "app/components/Button";
 
 const Index = () => {
   const dispatch = useAppDispatch()
   const items = useAppSelector(selectTickets);
-
 
   const handleRemove = (id?: string) => {
     dispatch(removeTickets(id))
@@ -31,9 +31,8 @@ const Index = () => {
           </div>
         </div>
       })}
-      <button disabled={!items.length} onClick={() => { }} className="bg-gray-800 hover:bg-gray-700 text-white font-bold py-2 px-4">
-        Download PDF
-      </button>
+
+      <Button label=" Download PDF" disabled={!items.length} onClick={() => { }} className="bg-gray-800 hover:bg-gray-700 text-white font-bold py-2 px-4" />
     </div>
   )
 }

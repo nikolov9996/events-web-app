@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 import type { RootState } from 'app/store'
-import { EventItem, WishLIstItemType } from 'app/types'
+import {  WishLIstItemType } from 'app/types'
 
 export const WISH_LIST_SLICE = "wish-list-slice"
 

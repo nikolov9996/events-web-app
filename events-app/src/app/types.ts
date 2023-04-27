@@ -19,6 +19,15 @@ export type EventItem = {
     id: string,
 }
 
+export type EventItemUser = {
+    name?: string,
+    image?: string,
+    date: string,
+    time: string,
+    id: string,
+    location: string
+}
+
 export type GetEventsType = {
     keyword: string,
     page: number,
@@ -50,5 +59,12 @@ export type WishLIstItemType = {
     price?: string,
     image?: string,
     currency?: string,
-    name?:string
+    name?: string
+}
+
+export type PageInfoType = {
+    number: number,
+    size: number,
+    totalElements: number,
+    totalPages: number
 }

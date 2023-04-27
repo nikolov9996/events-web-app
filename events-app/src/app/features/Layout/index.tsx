@@ -1,7 +1,6 @@
-import { Fragment } from 'react'
 import { Link, Outlet, useLocation } from 'react-router-dom'
-import { Disclosure, Menu, Transition } from '@headlessui/react'
-import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
+import { Disclosure } from '@headlessui/react'
+import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import { PAGES } from 'app/constants'
 import { useAppSelector } from 'app/hooks'
 import { selectTickets } from '../WishList/wishListSlice'
@@ -87,8 +86,8 @@ const Index = () => {
             )}
           </Disclosure>
         </div>
-        <main>
 
+        <main>
           <Outlet />
         </main>
       </div>
