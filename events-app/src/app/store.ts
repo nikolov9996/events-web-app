@@ -2,16 +2,18 @@ import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import { persistStore, persistReducer } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
 import homeSlice, { HOME_SLICE } from './features/Home/homeSlice';
+import wishListSlice, { WISH_LIST_SLICE } from './features/WishList/wishListSlice';
 // ...
 
 const rootReducer = combineReducers({
-    [HOME_SLICE]: homeSlice
+    [HOME_SLICE]: homeSlice,
+    [WISH_LIST_SLICE]: wishListSlice
 },)
 
 const persistConfig = {
     key: 'roo-2837sdft',
     storage,
-    whitelist: [HOME_SLICE],
+    whitelist: [HOME_SLICE, WISH_LIST_SLICE],
     blacklist: []
 }
 

@@ -1,27 +1,36 @@
 import { API_KEY } from 'app/constants';
+import { GetEventsType } from 'app/types';
 import axios, { AxiosInstance, AxiosRequestConfig } from 'axios';
 
 const axiosConfig: AxiosRequestConfig = {
     baseURL: 'https://app.ticketmaster.com/discovery/v2',
-    timeout: 5000,
+    timeout: 6000,
     headers: {
         'Content-Type': 'application/json',
         Accept: 'application/json',
     },
 };
 
-const keyQuery = `apikey=${API_KEY}`;
-
 const HttpService: AxiosInstance = axios.create(axiosConfig);
 
-
-
-export const getEvents = async (): Promise<any> => {
+export const getEvents = async ({ keyword, page, size }: GetEventsType): Promise<any> => {
 
     const q = new URLSearchParams();
 
-    q.append("size", "20");
-    q.append("page", "4");
+    if (keyword.length) q.append("keyword", keyword);
+    q.append("size", size.toString());
+    q.append("page", page.toString());
+    q.append("apikey", API_KEY);
 
-    return HttpService.get("/events.json?" + q.toString() + "&" + keyQuery)
+    return await HttpService.get("/events.json?" + q.toString())
+}
+
+export const getEventDetails = async (eventId: string | undefined) => {
+
+    const q = new URLSearchParams();
+
+    q.append("apikey", API_KEY);
+
+    return await HttpService.get(`/events/${eventId}?${q.toString()}`);
+
 }
