@@ -22,7 +22,7 @@ const initialState: homeState = {
         totalPages: 0
     },
     page: 1,
-    size: 10,
+    size: 12,
     userEvents: []
 }
 

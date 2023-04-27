@@ -4,7 +4,7 @@ import { useAppDispatch } from "app/hooks";
 import { EventDetailsType } from "app/types";
 import moment from "moment";
 import React, { useEffect } from "react";
-import {  useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { addTickets } from "../WishList/wishListSlice";
 import Button from "app/components/Button";
 
@@ -26,7 +26,7 @@ const Index = () => {
 
   const handleAdd = (price: string) => {
     dispatch(addTickets({
-      id: eventId,
+      id: eventId + new Date().getTime().toString(),
       price: price,
       ticketsCount: tickets,
       image: getLargestImage(event?.images)?.url,
